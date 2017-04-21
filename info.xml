@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <extension key="contrib.entityextra" type="module">
   <file>entityextra</file>
-  <name>FIXME</name>
-  <description>FIXME</description>
+  <name>Entity Extra</name>
+  <description>Entity Extra</description>
   <license>AGPL-3.0</license>
   <maintainer>
     <author>Chris Burgess</author>
@@ -20,7 +20,7 @@
   <compatibility>
     <ver>4.7</ver>
   </compatibility>
-  <comments>This is a new, undeveloped module</comments>
+  <comments>This is pretty random.</comments>
   <civix>
     <namespace>CRM/Entityextra</namespace>
   </civix>

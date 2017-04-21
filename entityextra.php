@@ -122,30 +122,13 @@ function entityextra_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
   _entityextra_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
-// --- Functions below this ship commented out. Uncomment as required. ---
-
 /**
- * Implements hook_civicrm_preProcess().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
- *
-function entityextra_civicrm_preProcess($formName, &$form) {
-
-} // */
-
-/**
- * Implements hook_civicrm_navigationMenu().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_navigationMenu
- *
-function entityextra_civicrm_navigationMenu(&$menu) {
-  _entityextra_civix_insert_navigation_menu($menu, NULL, array(
-    'label' => ts('The Page', array('domain' => 'contrib.entityextra')),
-    'name' => 'the_page',
-    'url' => 'civicrm/the-page',
-    'permission' => 'access CiviReport,access CiviContribute',
-    'operator' => 'OR',
-    'separator' => 0,
-  ));
-  _entityextra_civix_navigationMenu($menu);
-} // */
+ * Implements hook_civicrm_apiWrappers().
+ */
+function entityextra_civicrm_apiWrappers(&$wrappers, $apiRequest) {
+  //&apiWrappers is an array of wrappers, you can add your(s) with the hook.
+  // You can use the apiRequest to decide if you want to add the wrapper (eg. only wrap api.Contact.create)
+  if ($apiRequest['entity'] == 'ContributionPage' && $apiRequest['action'] == 'get') {
+    $wrappers[] = new CRM_EntityExtra_APIWrapper();
+  }
+}
