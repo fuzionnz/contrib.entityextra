@@ -12,14 +12,16 @@ class CRM_EntityExtra_APIWrapper implements API_Wrapper {
    * Alter the result before returning it to the caller.
    */
   public function toApiOutput($apiRequest, $result) {
-    switch ($apiRequest['entity']) {
-      case 'ContributionPage':
-        error_log(print_r($apiRequest, 1));
-        if (!isset($result['some_random_id'])) {
-          $result['some_random_id'] = 'xxx';
-          // $result['values'][$result['id']]['display_name_munged'] = 'MUNGE! ' . $result['values'][$result['id']]['display_name'];
-          // unset($result['values'][$result['id']]['display_name']);
-        }
+    if (strtolower($apiRequest['action'] == 'get')) {
+      switch (strtolower($apiRequest['entity'])) {
+        case 'ContributionPage':
+          if (!isset($result['some_random_info'])) {
+            $result['some_random_info'] = $apiRequest;
+            // $result['values'][$result['id']]['display_name_munged'] = 'MUNGE! ' . $result['values'][$result['id']]['display_name'];
+            // unset($result['values'][$result['id']]['display_name']);
+          }
+
+      }
     }
     return $result;
   }
